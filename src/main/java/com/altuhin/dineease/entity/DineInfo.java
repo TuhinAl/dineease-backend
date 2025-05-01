@@ -1,8 +1,8 @@
-package com.altuhin.dineease.enums;
+package com.altuhin.dineease.entity;
 
 
-import com.altuhin.dineease.entity.Auditable;
-import com.altuhin.dineease.entity.Role;
+import com.altuhin.dineease.enums.MemberTypeEnum;
+import com.altuhin.dineease.enums.SubscriptionTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,11 +14,12 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "member_info")
+@Table(name = "dine_info")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -30,38 +31,45 @@ public class DineInfo extends Auditable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Column(name = "firstName")
-    private String firstName;
+    @Column(name = "dine_name")
+    private String dineName;
 
-    @Column(name = "lastName")
-    private String lastName;
+    @Column(name = "total_member", nullable = false)
+    private Integer totalMember;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+    @Column(name = "current_admin_id", nullable = false)
+    private String currentAdminId;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+    @Column(name = "admin_phone_number", unique = true, nullable = false)
+    private String adminPhoneNumber;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "is_subscription_enabled")
+    private Boolean isSubscriptionEnabled;
 
-    @Column(name = "employee_nc_id")
-    private String employeeNcId;
+    @Column(name = "is_in_free_trial")
+    private Boolean isInFreeTrial;
 
-    @Column(name = "dob")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dob;
+    @Column(name = "trial_start_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime trialStartDate;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "trial_end_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime trialEndDate;
 
-    @Column(name = "memberTypeEnumKey")
+    @Column(name = "last_subscription_end_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime lastSubscriptionEndDate;
+
+    @Column(name = "subscription_type_enum_key")
     @Enumerated(EnumType.STRING)
-    private MemberTypeEnum memberTypeEnumKey;
+    private SubscriptionTypeEnum subscriptionTypeEnumKey;
 
-    @Column(name = "memberTypeEnum_value")
-    private String memberTypeEnumValue;
+    @Column(name = "subscription_type_enumvalue")
+    private String subscriptionTypeEnumKeyValue;
 
 
     /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
