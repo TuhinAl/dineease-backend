@@ -1,7 +1,7 @@
 package com.altuhin.dineease.enums;
 
 
-public enum MemberTypeEnum {
+public enum RoleTypeEnum {
 
   NORMAL_USER("NORMAL_USER", "NORMAL_USER"),
   ADMIN("ADMIN", "ADMIN");
@@ -9,7 +9,7 @@ public enum MemberTypeEnum {
   private final String key;
   private final String value;
 
-  MemberTypeEnum(String key, String value) {
+  RoleTypeEnum(String key, String value) {
     this.key = key;
     this.value = value;
   }

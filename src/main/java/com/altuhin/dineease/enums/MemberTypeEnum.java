@@ -1,15 +1,15 @@
-package com.tuhinal.employeemanagement.enums;
+package com.altuhin.dineease.enums;
 
 
-public enum AttendanceEnum {
+public enum MemberTypeEnum {
 
-  CHECK_IN("CHECK_IN", "Check In"),
-  CHECK_OUT("CHECK_OUT", "Check Out");
+  NORMAL_USER("NORMAL_USER", "NORMAL_USER"),
+  ADMIN("ADMIN", "ADMIN");
 
   private final String key;
   private final String value;
 
-  AttendanceEnum(String key, String value) {
+  MemberTypeEnum(String key, String value) {
     this.key = key;
     this.value = value;
   }

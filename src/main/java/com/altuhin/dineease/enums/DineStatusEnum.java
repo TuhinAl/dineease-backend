@@ -1,15 +1,16 @@
 package com.altuhin.dineease.enums;
 
 
-public enum SubscriptionTypeEnum {
+public enum DineStatusEnum {
 
-  FREE("FREE", "Free"),
-  SUBSCRIBED("SUBSCRIBED", "Subscribed");
+  ACTIVE("ACTIVE", "Active"),
+  DEACTIVATE("DEACTIVATE", "Deactivate"),
+  DELETED("DELETED", "Deleted"),;
 
   private final String key;
   private final String value;
 
-  SubscriptionTypeEnum(String key, String value) {
+  DineStatusEnum(String key, String value) {
     this.key = key;
     this.value = value;
   }

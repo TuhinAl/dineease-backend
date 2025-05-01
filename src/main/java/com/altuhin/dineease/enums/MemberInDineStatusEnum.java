@@ -1,16 +1,16 @@
 package com.altuhin.dineease.enums;
 
 
-public enum DineStatusEnum {
+public enum MemberInDineStatusEnum {
 
-  ACTIVE("ACTIVE", "Active"),
-  DEACTIVATE("DEACTIVATE", "Deactivate"),
-  DELETED("DELETED", "Deleted"),;
+  PENDING("PENDING", "Pending"),
+  JOINED("JOINED", "Joined"),
+  GO_AWAY_FROM_DINE("GO_AWAY_FROM_DINE", "Go Away From Dine"),;
 
   private final String key;
   private final String value;
 
-  DineStatusEnum(String key, String value) {
+  MemberInDineStatusEnum(String key, String value) {
     this.key = key;
     this.value = value;
   }
