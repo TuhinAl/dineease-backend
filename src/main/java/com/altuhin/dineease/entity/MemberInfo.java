@@ -23,17 +23,14 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class DineInfo extends Auditable {
+public class MemberInfo extends Auditable {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Column(name = "firstName")
-    private String firstName;
-
-    @Column(name = "lastName")
-    private String lastName;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -41,26 +38,27 @@ public class DineInfo extends Auditable {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "phone_number", unique = true, nullable = false)
+    private String phoneNumber;
 
-    @Column(name = "employee_nc_id")
-    private String employeeNcId;
+    @Column(name = "is_phone_verified")
+    private Boolean isPhoneVerified;
 
-    @Column(name = "dob")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dob;
+    @Column(name = "is_admin")
+    private Boolean isAdmin;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "memberTypeEnumKey")
+    @Column(name = "member_type_enum_key")
     @Enumerated(EnumType.STRING)
     private MemberTypeEnum memberTypeEnumKey;
 
-    @Column(name = "memberTypeEnum_value")
+    @Column(name = "member_type_enum_value")
     private String memberTypeEnumValue;
+
+    @Column(name = "number_of_free_dine_associated")
+    private Integer numberOfFreeDineAssociated;
 
 
     /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
@@ -86,7 +84,7 @@ public class DineInfo extends Auditable {
                     , referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
-    public DineInfo(String id) {
+    public MemberInfo(String id) {
         this.id = id;
     }
 
