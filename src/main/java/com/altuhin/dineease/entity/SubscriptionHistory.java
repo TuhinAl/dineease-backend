@@ -13,54 +13,39 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "member_info")
+@Table(name = "Subscription_history")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class SubscriptionInfo extends Auditable {
+public class SubscriptionHistory extends Auditable {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Column(name = "firstName")
-    private String firstName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dine_id", nullable = false)
+    private DineInfo dineInfo;
 
-    @Column(name = "lastName")
-    private String lastName;
+    @Column(name = "subscription_start_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime subscriptionStartDate;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+    @Column(name = "subscription_end_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime subscriptionEndDate;
 
-    @Column(name = "username", nullable = false)
-    private String username;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "employee_nc_id")
-    private String employeeNcId;
-
-    @Column(name = "dob")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dob;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "memberTypeEnumKey")
-    @Enumerated(EnumType.STRING)
-    private MemberTypeEnum memberTypeEnumKey;
-
-    @Column(name = "memberTypeEnum_value")
-    private String memberTypeEnumValue;
+    @Column(name = "transaction_id", nullable = false)
+    private String transactionId;
 
 
     /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
@@ -86,7 +71,7 @@ public class SubscriptionInfo extends Auditable {
                     , referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
-    public SubscriptionInfo(String id) {
+    public SubscriptionHistory(String id) {
         this.id = id;
     }
 

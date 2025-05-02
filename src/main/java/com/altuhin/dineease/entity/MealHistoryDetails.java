@@ -1,7 +1,7 @@
 package com.altuhin.dineease.entity;
 
 
-import com.altuhin.dineease.enums.MemberTypeEnum;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,58 +10,43 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "member_info")
+@Table(name = "meal_history_details")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class MemberInfo extends Auditable {
+public class MealHistoryDetails extends Auditable {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @Column(name = "firstName")
-    private String firstName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dine_id", nullable = false)
+    private DineInfo dineInfo;
 
-    @Column(name = "lastName")
-    private String lastName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private MemberInfo memberInfo;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+    @Column(name = "meal_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime meal_date;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+//    @Type(type = "jsonb")
+    @Column(name = "meal_config", columnDefinition = "jsonb")
+    private String mealConfigJson;
 
-    @Column(name = "phone_number", unique = true, nullable = false)
-    private String phoneNumber;
-
-    @Column(name = "is_phone_verified")
-    private Boolean isPhoneVerified;
-
-    @Column(name = "is_admin")
-    private Boolean isAdmin;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "member_type_enum_key")
-    @Enumerated(EnumType.STRING)
-    private MemberTypeEnum memberTypeEnumKey;
-
-    @Column(name = "member_type_enum_value")
-    private String memberTypeEnumValue;
-
-    @Column(name = "number_of_free_dine_associated")
-    private Integer numberOfFreeDineAssociated;
 
 
     /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
@@ -87,7 +72,7 @@ public class MemberInfo extends Auditable {
                     , referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
-    public MemberInfo(String id) {
+    public MealHistoryDetails(String id) {
         this.id = id;
     }
 
