@@ -2,7 +2,6 @@ package com.altuhin.dineease.entity;
 
 
 import com.altuhin.dineease.enums.MemberTypeEnum;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,10 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -60,6 +58,8 @@ public class MemberInfo extends Auditable {
     @Column(name = "number_of_free_dine_associated")
     private Integer numberOfFreeDineAssociated;
 
+    @OneToMany(mappedBy = "dineInfo", fetch = FetchType.LAZY)
+    private List<DineInfo> dineInfoList;
 
     /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
     private List<Leave> leaveList;

@@ -1,7 +1,6 @@
 package com.altuhin.dineease.entity;
 
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,12 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "meal_history_details")
@@ -43,34 +39,21 @@ public class MealHistoryDetails extends Auditable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime meal_date;
 
-//    @Type(type = "jsonb")
-    @Column(name = "meal_config", columnDefinition = "jsonb")
-    private String mealConfigJson;
+    @Column(name = "breakfast_meal_number")
+    private Double breakfastMealNumber;
 
+    @Column(name = "lunch_meal_number")
+    private Double lunchMealNumber; // todo: need to set default
 
+    @Column(name = "dinner_meal_number")
+    private Double dinnerMealNumber; // todo: need to set default
 
-    /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<Leave> leaveList;
+    @Column(name = "is_approved_by_manager") // todo: need to set default
+    private Boolean isApprovedByManager;
 
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<LeaveHistory> leaveHistoryList;
+    @Column(name = "meal_create_by") // todo: need to set default
+    private Boolean mealCreateBy;
 
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<EmployeeAccountTransaction> employeeAccountTransactionList;
-
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<EmployeeAttendance> employeeAttendanceList;*/
-
-   /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_bank_info_id")
-    private EmployeeBankInfo employeeBankInfo;*/
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "employee_info_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"
-                    , referencedColumnName = "id"))
-    private Set<Role> roles = new HashSet<>();
 
     public MealHistoryDetails(String id) {
         this.id = id;

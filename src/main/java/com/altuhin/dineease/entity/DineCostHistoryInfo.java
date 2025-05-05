@@ -39,7 +39,7 @@ public class DineCostHistoryInfo extends Auditable {
     @JoinColumn(name = "member_id", nullable = false)
     private MemberInfo memberInfo;
 
-    @Column(name = "totalCost")
+    @Column(name = "total_cost")
     private Double totalCost; // todo: need to set default
 
     @Column(name = "last_subscription_end_date")
