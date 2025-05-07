@@ -27,12 +27,18 @@ public class MealHistoryDetails extends Auditable {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dine_id", nullable = false)
+    @JoinColumn(name = "dine_info_id", nullable = false)
     private DineInfo dineInfo;
 
+    @Column(name = "dine_info_id", insertable = false, updatable = false)
+    private String dineInfoId;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
+    @JoinColumn(name = "member_info_id", nullable = false)
     private MemberInfo memberInfo;
+
+    @Column(name = "member_info_id", insertable = false, updatable = false)
+    private String memberInfoId;
 
     @Column(name = "meal_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

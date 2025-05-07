@@ -1,7 +1,6 @@
 package com.altuhin.dineease.entity;
 
 
-import com.altuhin.dineease.enums.MemberTypeEnum;
 import com.altuhin.dineease.enums.SubscriptionTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -13,9 +12,10 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -71,29 +71,14 @@ public class DineInfo extends Auditable {
     @Column(name = "subscription_type_enumvalue")
     private String subscriptionTypeEnumKeyValue;
 
+    @OneToMany(mappedBy = "dineInfo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DineMemberMapping> dineMemberMappingList = new ArrayList<>();
 
-    /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<Leave> leaveList;
+    @OneToMany(mappedBy = "dineInfo", fetch = FetchType.LAZY)
+    private List<MealHistoryDetails> mealHistoryDetailsList;
 
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<LeaveHistory> leaveHistoryList;
-
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<EmployeeAccountTransaction> employeeAccountTransactionList;
-
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<EmployeeAttendance> employeeAttendanceList;*/
-
-   /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_bank_info_id")
-    private EmployeeBankInfo employeeBankInfo;*/
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "employee_info_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"
-                    , referencedColumnName = "id"))
-    private Set<Role> roles = new HashSet<>();
+    @OneToMany(mappedBy = "dineInfo", fetch = FetchType.LAZY)
+    private List<SubscriptionHistory> subscriptionHistoryList;
 
     public DineInfo(String id) {
         this.id = id;

@@ -3,7 +3,6 @@ package com.altuhin.dineease.entity;
 
 import com.altuhin.dineease.util.MealCostJsonData;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +11,6 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 import org.springframework.format.annotation.DateTimeFormat;
 

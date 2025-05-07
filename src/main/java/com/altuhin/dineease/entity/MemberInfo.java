@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -61,21 +62,8 @@ public class MemberInfo extends Auditable {
     @OneToMany(mappedBy = "dineInfo", fetch = FetchType.LAZY)
     private List<DineInfo> dineInfoList;
 
-    /*@OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<Leave> leaveList;
-
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<LeaveHistory> leaveHistoryList;
-
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<EmployeeAccountTransaction> employeeAccountTransactionList;
-
-    @OneToMany(mappedBy = "employeeInfo", fetch = FetchType.LAZY)
-    private List<EmployeeAttendance> employeeAttendanceList;*/
-
-   /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_bank_info_id")
-    private EmployeeBankInfo employeeBankInfo;*/
+    @OneToMany(mappedBy = "memberInfo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DineMemberMapping> dineMemberMappingList;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
