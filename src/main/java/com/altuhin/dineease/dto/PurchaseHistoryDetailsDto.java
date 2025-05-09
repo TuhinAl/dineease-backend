@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class DineCostHistoryInfoDto {
+public class PurchaseHistoryDetailsDto {
 
     private String id;
     private DineInfoDto dineInfoDto;
@@ -29,7 +29,7 @@ public class DineCostHistoryInfoDto {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime lastSubscriptionEndDate;
+    private LocalDateTime purchaseDateTime;
 
     @JdbcTypeCode(SqlTypes.JSON)
     private MealCostJsonData mealCostJsonData;
@@ -38,7 +38,7 @@ public class DineCostHistoryInfoDto {
     private String createdBy;
     private LocalDateTime createdDate;
 
-    public DineCostHistoryInfoDto(String id) {
+    public PurchaseHistoryDetailsDto(String id) {
         this.id = id;
     }
 

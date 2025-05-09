@@ -17,13 +17,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "meal_cost_history_info")
+@Table(name = "purchase_history_details")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class DineCostHistoryInfo extends Auditable {
+public class PurchaseHistoryDetails extends Auditable {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -40,16 +40,16 @@ public class DineCostHistoryInfo extends Auditable {
     @Column(name = "total_cost")
     private Double totalCost; // todo: need to set default
 
-    @Column(name = "last_subscription_end_date")
+    @Column(name = "purchase_date_time")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime lastSubscriptionEndDate;
+    private LocalDateTime purchaseDateTime;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "meal_cost_json_data", columnDefinition = "jsonb")
     private MealCostJsonData mealCostJsonData;
 
-    public DineCostHistoryInfo(String id) {
+    public PurchaseHistoryDetails(String id) {
         this.id = id;
     }
 

@@ -31,11 +31,8 @@ public class MemberInfo extends Auditable {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
-
-    @Column(name = "username", nullable = false)
-    private String username;
 
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;
@@ -43,8 +40,8 @@ public class MemberInfo extends Auditable {
     @Column(name = "is_phone_verified")
     private Boolean isPhoneVerified;
 
-    @Column(name = "is_admin")
-    private Boolean isAdmin;
+    @Column(name = "is_admin",  nullable = false)
+    private Boolean isAdmin = Boolean.FALSE;
 
     @Column(name = "address")
     private String address;

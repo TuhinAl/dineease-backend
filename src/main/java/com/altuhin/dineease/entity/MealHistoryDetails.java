@@ -40,10 +40,10 @@ public class MealHistoryDetails extends Auditable {
     @Column(name = "member_info_id", insertable = false, updatable = false)
     private String memberInfoId;
 
-    @Column(name = "meal_date")
+    @Column(name = "meal_date_time")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime meal_date;
+    private LocalDateTime mealDateTime;
 
     @Column(name = "breakfast_meal_number")
     private Double breakfastMealNumber;
