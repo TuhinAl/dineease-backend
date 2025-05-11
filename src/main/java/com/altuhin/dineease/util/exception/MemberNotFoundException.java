@@ -1,7 +1,7 @@
 package com.altuhin.dineease.util.exception;
 
-public class EmployeeNotFoundException extends RuntimeException {
-    public EmployeeNotFoundException(String message) {
+public class MemberNotFoundException extends RuntimeException {
+    public MemberNotFoundException(String message) {
         super(message);
     }
 

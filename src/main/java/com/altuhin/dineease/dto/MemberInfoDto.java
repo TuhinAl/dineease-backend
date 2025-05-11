@@ -27,7 +27,6 @@ public class MemberInfoDto {
     private String id;
     private String fullName;
     private String email;
-    private String username;
     private String phoneNumber;
     private Boolean isPhoneVerified;
     private Boolean isAdmin;
@@ -42,6 +41,7 @@ public class MemberInfoDto {
     private Set<Role> roles = new HashSet<>();
 
     private Boolean enabled;
+    private Boolean isMemberRegistered;
     private String createdBy;
     private LocalDateTime createdDate;
 

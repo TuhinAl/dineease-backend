@@ -56,9 +56,6 @@ public class MemberInfo extends Auditable {
     @Column(name = "number_of_free_dine_associated")
     private Integer numberOfFreeDineAssociated;
 
-    @OneToMany(mappedBy = "dineInfo", fetch = FetchType.LAZY)
-    private List<DineInfo> dineInfoList;
-
     @OneToMany(mappedBy = "memberInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DineMemberMapping> dineMemberMappingList;
 
