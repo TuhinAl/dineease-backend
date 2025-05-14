@@ -37,6 +37,9 @@ public class MemberInfo extends Auditable {
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phoneNumber;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "is_phone_verified")
     private Boolean isPhoneVerified;
 

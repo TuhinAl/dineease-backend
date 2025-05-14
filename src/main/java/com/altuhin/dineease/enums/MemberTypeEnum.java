@@ -3,8 +3,9 @@ package com.altuhin.dineease.enums;
 
 public enum MemberTypeEnum {
 
-  NORMAL_USER("NORMAL_USER", "NORMAL_USER"),
-  ADMIN("ADMIN", "ADMIN");
+  NORMAL_USER("NORMAL_USER", "Normal User"),
+  SUPER_ADMIN("SUPER_ADMIN", "Super Admin"),
+  ADMIN("ADMIN", "Admin");
 
   private final String key;
   private final String value;
