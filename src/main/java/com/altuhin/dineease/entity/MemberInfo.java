@@ -40,6 +40,9 @@ public class MemberInfo extends Auditable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "otp")
+    private String otp;
+
     @Column(name = "is_phone_verified")
     private Boolean isPhoneVerified;
 

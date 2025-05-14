@@ -28,6 +28,8 @@ public class MemberInfoDto {
     private String fullName;
     private String email;
     private String phoneNumber;
+    private String password;
+    private String otp;
     private Boolean isPhoneVerified;
     private Boolean isAdmin;
     private String address;
