@@ -77,4 +77,5 @@ public class MemberInfoService {
         return memberInfoDto;
     }
 
+    //todo: update member info like email, name, address
 }
