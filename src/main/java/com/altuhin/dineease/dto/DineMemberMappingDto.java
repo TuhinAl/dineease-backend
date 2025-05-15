@@ -32,6 +32,10 @@ public class DineMemberMappingDto {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime memberDineJoinDate;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime mealLastUpdateDateTime;
+
     @Enumerated(EnumType.STRING)
     private SubscriptionTypeEnum memberInDineStatusEnumKey;
     private String memberInDineStatusEnumValue;

@@ -45,8 +45,13 @@ public class MealHistoryDetails extends Auditable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime mealDateTime;
 
+    @Column(name = "meal_last_update_date_time")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime mealLastUpdateDateTime;
+
     @Column(name = "breakfast_meal_number")
-    private Double breakfastMealNumber;
+    private Double breakfastMealNumber; // todo: need to set default
 
     @Column(name = "lunch_meal_number")
     private Double lunchMealNumber; // todo: need to set default
@@ -54,11 +59,14 @@ public class MealHistoryDetails extends Auditable {
     @Column(name = "dinner_meal_number")
     private Double dinnerMealNumber; // todo: need to set default
 
+    @Column(name = "total_meal_number")
+    private Double totalMealNumber; // todo: need to set default
+
     @Column(name = "is_approved_by_manager") // todo: need to set default
     private Boolean isApprovedByManager;
 
     @Column(name = "meal_create_by") // todo: need to set default
-    private Boolean mealCreateBy;
+    private String mealCreateBy;
 
 
     public MealHistoryDetails(String id) {

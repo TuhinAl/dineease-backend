@@ -24,14 +24,18 @@ public class MealHistoryDetailsDto {
     private String dineInfoId;
     private MemberInfoDto memberInfoDto;
     private String memberInfoId;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime meal_date;
-    private Double breakfastMealNumber;  // todo: need to set default
-    private Double lunchMealNumber; // todo: need to set default
-    private Double dinnerMealNumber; // todo: need to set default
-    private Boolean isApprovedByManager; // todo: need to set default
-    private Boolean mealCreateBy;
+
+    private Double breakfastMealNumber;
+    private Double lunchMealNumber;
+    private Double dinnerMealNumber;
+    private Double totalMealNumber;
+
+    private Boolean isApprovedByManager;
+    private String mealCreateBy;
 
     private Boolean enabled;
     private String createdBy;

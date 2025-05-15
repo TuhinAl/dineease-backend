@@ -45,7 +45,7 @@ public class DineInfoDto {
 
     @Enumerated(EnumType.STRING)
     private SubscriptionTypeEnum subscriptionTypeEnumKey;
-    private String subscriptionTypeEnumKeyValue;
+    private String subscriptionTypeEnumValue;
 
     private Boolean enabled;
     private String createdBy;

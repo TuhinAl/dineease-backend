@@ -69,7 +69,7 @@ public class DineInfo extends Auditable {
     private SubscriptionTypeEnum subscriptionTypeEnumKey;
 
     @Column(name = "subscription_type_enum_value")
-    private String subscriptionTypeEnumKeyValue;
+    private String subscriptionTypeEnumValue;
 
     @OneToMany(mappedBy = "dineInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DineMemberMapping> dineMemberMappingList;

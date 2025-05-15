@@ -32,7 +32,7 @@ public class DineMemberMapping extends Auditable {
     private DineInfo dineInfo;
 
     @Column(name = "dine_info_id", insertable = false, updatable = false)
-    private String employeeInfoId;
+    private String dineInfoId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_info_id", nullable = false)
@@ -42,7 +42,7 @@ public class DineMemberMapping extends Auditable {
     private String memberInfoId;
 
     @Column(name = "is_admin")
-    private Boolean isAdmin;
+    private Boolean isAdmin; // not necessarily needed
 
     @Column(name = "member_dine_join_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -51,7 +51,7 @@ public class DineMemberMapping extends Auditable {
 
     @Column(name = "member_in_dine_status_enum_key")
     @Enumerated(EnumType.STRING)
-    private SubscriptionTypeEnum memberInDineStatusEnumKey;
+    private SubscriptionTypeEnum memberInDineStatusEnumKey; // member in dine current status currently active, leaved
 
     @Column(name = "member_in_dine_status_enum_value")
     private String memberInDineStatusEnumValue;
